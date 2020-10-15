@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "company", uniqueConstraints={
         @UniqueConstraint(  columnNames ={"email"})
 })
-public class Company {
+public class  Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,6 @@ public class Company {
     private String name;
 
     @Column
-    @NotBlank(message = "nit mandatory")
     private String nit;
 
     @Column
