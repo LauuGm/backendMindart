@@ -15,8 +15,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 public class ResourcesServerConfig extends ResourceServerConfigurerAdapter {
 
     private static final RequestMatcher PUBLIC_ENDPOINTS = new OrRequestMatcher(
-            new AntPathRequestMatcher("/admins/", HttpMethod.POST.name()),
-            new AntPathRequestMatcher("/companies/", HttpMethod.POST.name())
+            new AntPathRequestMatcher("/admins/", HttpMethod.POST.name())
     );
 
     @Override

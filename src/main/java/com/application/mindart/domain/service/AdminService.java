@@ -10,28 +10,18 @@ import org.springframework.stereotype.Service;
 import com.application.mindart.app.api.AdminApi;
 import com.application.mindart.app.request.CreateAdminRequest;
 import com.application.mindart.domain.entity.Admin;
-import com.application.mindart.domain.entity.Artist;
-import com.application.mindart.domain.entity.Company;
 import com.application.mindart.domain.repository.AdminRepository;
-import com.application.mindart.domain.repository.ArtistRepository;
-import com.application.mindart.domain.repository.CompanyRepository;
 
 @Service
 public class AdminService {
 
     private final AdminRepository adminRepository;
-    private final ArtistRepository artistRepository;
-    private final CompanyRepository companyRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public AdminService(AdminRepository adminRepository,
-                        ArtistRepository artistRepository,
-                        CompanyRepository companyRepository,
                         PasswordEncoder passwordEncoder) {
         this.adminRepository = adminRepository;
-        this.artistRepository = artistRepository;
-        this.companyRepository = companyRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -41,21 +31,13 @@ public class AdminService {
             throw new Exception("Ya existe un admin con ese correo.");
         }
 
-        Artist artist = artistRepository.findByEmail(request.getEmail());
-        if (artist != null) {
-            throw new Exception("Ya existe un artista con ese correo.");
-        }
-
-        Company company = companyRepository.findByEmail(request.getEmail());
-        if (company != null) {
-            throw new Exception("Ya existe una empresa con ese correo.");
-        }
-
         Admin adminToSave = new Admin();
         adminToSave.setDob(request.getDob());
         adminToSave.setEmail(request.getEmail());
         adminToSave.setName(request.getName());
         adminToSave.setNumber(request.getNumber());
+        adminToSave.setNit(request.getNit());
+        adminToSave.setTypeUser(request.getTypeUser());
         adminToSave.setPassword(passwordEncoder.encode(request.getPassword()));
 
         return adminRepository.save(adminToSave);
@@ -99,6 +81,8 @@ public class AdminService {
         adminApi.setEmail(admin.getEmail());
         adminApi.setName(admin.getName());
         adminApi.setNumber(admin.getNumber());
+        adminApi.setNit(admin.getNit());
+        adminApi.setTypeUser(admin.getTypeUser());
         return adminApi;
     }
 

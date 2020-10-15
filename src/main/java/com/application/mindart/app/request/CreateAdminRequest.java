@@ -11,7 +11,6 @@ public class CreateAdminRequest {
     @NotBlank
     private String name;
 
-    @NotBlank
     private String dob;
 
     @NotBlank
@@ -23,6 +22,10 @@ public class CreateAdminRequest {
 
     @NotBlank
     private String number;
+
+    private String nit;
+
+    private String typeUser;
 
     public CreateAdminRequest() {
         super();
@@ -68,4 +71,19 @@ public class CreateAdminRequest {
         this.number = number;
     }
 
+    public String getNit() {
+        return nit;
+    }
+
+    public void setNit(String nit) {
+        this.nit = nit;
+    }
+
+    public String getTypeUser() {
+        return typeUser;
+    }
+
+    public void setTypeUser(String typeUser) {
+        this.typeUser = typeUser;
+    }
 }
