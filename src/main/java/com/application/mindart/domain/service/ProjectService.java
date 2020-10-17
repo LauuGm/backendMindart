@@ -31,12 +31,7 @@ public class ProjectService {
         return projectRepository.findById(id).orElse(null);
 
     }
-    public List<Project> findByArtistId(String id){
 
-        return projectRepository.findByArtistId(id);
-
-
-    }
 
 
 
