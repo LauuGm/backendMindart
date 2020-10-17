@@ -2,6 +2,8 @@ package com.application.mindart.app.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Column;
+
 public class AdminApi {
 
     @JsonProperty
@@ -14,6 +16,10 @@ public class AdminApi {
     private String number;
     @JsonProperty
     private String email;
+    @JsonProperty
+    private String nit;
+    @JsonProperty
+    private String typeUser;
 
     public AdminApi() {
         super();
@@ -59,4 +65,19 @@ public class AdminApi {
         this.email = email;
     }
 
+    public String getNit() {
+        return nit;
+    }
+
+    public void setNit(String nit) {
+        this.nit = nit;
+    }
+
+    public String getTypeUser() {
+        return typeUser;
+    }
+
+    public void setTypeUser(String typeUser) {
+        this.typeUser = typeUser;
+    }
 }
