@@ -31,6 +31,12 @@ public class Admin {
     @Column(unique = true)
     private String email;
 
+    @Column
+    private String nit;
+
+    @Column
+    private String typeUser;
+
     public Admin() {
         super();
     }
@@ -83,4 +89,19 @@ public class Admin {
         this.email = email;
     }
 
+    public String getNit() {
+        return nit;
+    }
+
+    public void setNit(String nit) {
+        this.nit = nit;
+    }
+
+    public String getTypeUser() {
+        return typeUser;
+    }
+
+    public void setTypeUser(String typeUser) {
+        this.typeUser = typeUser;
+    }
 }
