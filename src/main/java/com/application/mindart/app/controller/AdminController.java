@@ -30,33 +30,33 @@ public class AdminController extends AbstractController {
 
     @Autowired
     private AdminService service;
-
+    @CrossOrigin
     @PostMapping("/")
     public Admin create(@Valid @RequestBody CreateAdminRequest request) throws Exception {
         return service.saveAdmin(request);
     }
-
+    @CrossOrigin
     @GetMapping("/all")
     public List<Admin> findAllAdmin() {
         String user = getUser();
         return service.getAdmin();
     }
-
+    @CrossOrigin
     @GetMapping("/findByEmail")
     public AdminApi getByEmail(@RequestParam(name = "email") String email) throws Exception {
         return service.getByEmail(email);
     }
-
+    @CrossOrigin
     @GetMapping("/{id}")
     public Admin findById(@PathVariable Integer id) throws Exception {
         return service.getAdminById(id, getUser());
     }
-
+    @CrossOrigin
     @PutMapping("/")
     public Admin update(@RequestBody Admin admin) {
         return service.updateAdmin(admin);
     }
-
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public String delete(@PathVariable Integer id) {
         return service.deleteAdmin(id);
