@@ -30,33 +30,33 @@ public class AdminController extends AbstractController {
 
     @Autowired
     private AdminService service;
-    @CrossOrigin
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/")
     public Admin create(@Valid @RequestBody CreateAdminRequest request) throws Exception {
         return service.saveAdmin(request);
     }
-    @CrossOrigin
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/all")
     public List<Admin> findAllAdmin() {
         String user = getUser();
         return service.getAdmin();
     }
-    @CrossOrigin
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/findByEmail")
     public AdminApi getByEmail(@RequestParam(name = "email") String email) throws Exception {
         return service.getByEmail(email);
     }
-    @CrossOrigin
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{id}")
     public Admin findById(@PathVariable Integer id) throws Exception {
         return service.getAdminById(id, getUser());
     }
-    @CrossOrigin
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/")
     public Admin update(@RequestBody Admin admin) {
         return service.updateAdmin(admin);
     }
-    @CrossOrigin
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/{id}")
     public String delete(@PathVariable Integer id) {
         return service.deleteAdmin(id);
